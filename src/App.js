@@ -1,24 +1,35 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+// import { useState, useEffect } from 'react';
+// import { getInvoicesByType } from './services/invoices';
+
+import InvoiceProvider from './context/invoices';
+import InvoiceTable from './components/invoiceTable';
+import CreditNoteTable from './components/creditNoteTable';
+// import { InfoModal } from './components/infoModal';
 
 function App() {
+//  const [invoiceData, setInvoiceData] = useState([]);
+//  //// const [invoiceId, setInvoiceId] = useState(null);
+//
+//  //useEffect(() => {
+//  //  const response = getInvoicesByType({ type: 'received' });
+//  //  setInvoiceData(response);
+//  //}, []);
+//
+  //console.log(invoiceData);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <InvoiceProvider>
+      <div className="App">
+        <header className="App-header">
+          <InvoiceTable/>
+          <CreditNoteTable />
+          {/*<button> Asignar </button>
+          <InfoModal /> */}
+        </header>
+      </div>
+    </InvoiceProvider>
   );
 }
 
