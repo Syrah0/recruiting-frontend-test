@@ -5,11 +5,6 @@ const useInvoice = () => {
   const state = useContext(InvoiceContext);
   const dispatch = useContext(InvoiceDispatchContext);
 
-  const getCreditNote = async (invoiceSelected) => {
-    const creditData = state.data.filter(invoice => invoice.reference === invoiceSelected);
-    dispatch({ type: "credits", credits: creditData });
-  };
-
   const setSelectedInvoice = async (invoiceId) => {
     dispatch({ type: 'invoiceSelected', invoiceSelected: invoiceId });
   };
@@ -22,7 +17,6 @@ const useInvoice = () => {
     ...state,
     setSelectedInvoice,
     setSelectedCreditNote,
-    getCreditNote,
   };
 };
 
