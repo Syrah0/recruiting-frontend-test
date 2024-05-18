@@ -1,6 +1,9 @@
 export const invoiceReducer = (state, action) => {
   const reseted = { error: false, loading: false, message: null };
   switch (action.type) {
+    case 'init': {
+      return { ...state, ...reseted, data: action.data, loading: false };
+    }
     case 'invoices': {
       return { ...state, ...reseted, invoices: action.invoices, loading: false };
     }
@@ -8,7 +11,7 @@ export const invoiceReducer = (state, action) => {
       return { ...state, ...reseted, creditsNote: action.credits, loading: false };
     }
     case 'invoiceSelected': {
-      return { ...state, ...reseted, invoiceSelected: action.invoiceSelected };
+      return { ...state, ...reseted, invoiceSelected: action.invoiceSelected, loading: false };
     }
     case 'creditNoteSelected': {
         return { ...state, ...reseted, creditNoteSelected: action.creditNoteSelected };

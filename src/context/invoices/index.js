@@ -6,6 +6,7 @@ import * as invoiceApi from "../../services/invoices";
 const defaultState = {
   error: false,
   loading: false,
+  data: [],
   invoices: [],
   invoiceSelected: null,
   creditsNote: [],
@@ -26,11 +27,10 @@ const InvoiceProvider = ({ children }) => {
       dispatch({ type: "loading" });
       try {
         const response = await invoiceApi.getInvoicesByType({
-          type: 'received',
           signal
         });
-        console.log(response);
-        dispatch({ type: "invoices", invoices: response });
+        dispatch({ type: "init", data: response });
+        dispatch({ type: "invoices", invoices: response.filter(invoice => invoice.type === 'received') });
       } catch (e) {
         dispatch({
           type: "error",

@@ -6,7 +6,7 @@ import './App.css';
 import InvoiceProvider from './context/invoices';
 import InvoiceTable from './components/invoiceTable';
 import CreditNoteTable from './components/creditNoteTable';
-// import { InfoModal } from './components/infoModal';
+import InfoModal from './components/infoModal';
 
 function App() {
 //  const [invoiceData, setInvoiceData] = useState([]);
@@ -25,8 +25,7 @@ function App() {
         <header className="App-header">
           <InvoiceTable/>
           <CreditNoteTable />
-          {/*<button> Asignar </button>
-          <InfoModal /> */}
+          <InfoModal />
         </header>
       </div>
     </InvoiceProvider>

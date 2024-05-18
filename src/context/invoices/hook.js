@@ -1,18 +1,14 @@
-import { useContext, useCallback} from "react";
+import { useContext } from "react";
 import { InvoiceContext, InvoiceDispatchContext } from ".";
-import * as invoiceApi from "../../services/invoices";
 
 const useInvoice = () => {
   const state = useContext(InvoiceContext);
   const dispatch = useContext(InvoiceDispatchContext);
 
-  const getCreditNote = useCallback(async () => {
-    dispatch({ type: "loading" });
-    const response = await invoiceApi.getCreditNoteById({
-      invId: state.invoiceSelected,
-    });
-    dispatch({ type: "credits", credits: response });
-  }, []);
+  const getCreditNote = async (invoiceSelected) => {
+    const creditData = state.data.filter(invoice => invoice.reference === invoiceSelected);
+    dispatch({ type: "credits", credits: creditData });
+  };
 
   const setSelectedInvoice = async (invoiceId) => {
     dispatch({ type: 'invoiceSelected', invoiceSelected: invoiceId });
